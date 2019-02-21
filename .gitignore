@@ -1,3 +1,4 @@
 .stack-work/
-/TAGS
 /src/Main.hs
+TAGS
+/tiger/src/Main.hs
