@@ -13,6 +13,7 @@ data BinOp = Add | Sub | Mul
     deriving (Show)
 
 data Error = Underflow
+    deriving Show
 
 eval :: [Int] -> [Instruction] -> Either Error [Int]
 eval xs (Push x : is) = eval (x : xs) is
