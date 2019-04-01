@@ -1,5 +1,5 @@
 {
-module Main where
+module Lex where
 
 import           Data.Text (Text)
 

@@ -17,6 +17,7 @@ executable expert-robot
   hs-source-dirs:      src
   main-is:             Main.hs
   other-modules:
+                Lex
                 Interpreters.BinInt
                 Interpreters.BinDouble
                 Interpreters.VariadicInt
