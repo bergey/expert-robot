@@ -3,3 +3,8 @@
 TAGS
 /tiger/src/Main.hs
 /src/Lex.hs
+/Setup
+/Setup.hi
+/Setup.o
+/dist/
+/result
