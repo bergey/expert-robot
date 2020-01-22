@@ -38,11 +38,10 @@ evalPromoting (Op op a b) = f (evalPromoting a) (evalPromoting b) where
             (DT x, IT i) -> x / fromIntegral i
             (IT i, IT j) -> fromIntegral i / fromIntegral j
 
-data Error = TypeMismatch Term Term
-    | IntDivision Term Term
+data Error a = TypeMismatch a a | IntDivision a a
     deriving Show
 
-eval :: Expr -> Either Error Term
+eval :: Expr -> Either (Error Term) Term
 eval (I i) = Right $ IT i
 eval (D d) = Right $ DT d
 eval (Op op a b) = do
@@ -50,12 +49,12 @@ eval (Op op a b) = do
     b' <- eval b
     f a' b'
   where
-    liftT :: (forall a. Num a => a -> a -> a) -> Term -> Term -> Either Error Term
+    liftT :: (forall a. Num a => a -> a -> a) -> Term -> Term -> Either (Error Term) Term
     liftT f x y = case (x, y) of
       (IT i, IT j) -> Right (IT (f i j))
       (DT x, DT y) -> Right (DT (f x y))
       _ -> Left (TypeMismatch x y)
-    f :: Term -> Term -> Either Error Term
+    f :: Term -> Term -> Either (Error Term) Term
     f = case op of
         Add -> liftT (+)
         Sub -> liftT (-)
@@ -63,6 +62,21 @@ eval (Op op a b) = do
         Div -> \x y -> case (x,y) of
             (DT x, DT y) -> Right (DT (x / y))
             _ -> Left (IntDivision x y)
+
+data PrimType = TyInt | TyDouble
+    deriving (Show, Eq)
+
+-- | Do not evaluate, just check if types are OK
+typeCheck :: Expr -> Either (Error PrimType) PrimType
+typeCheck (I _) = Right TyInt
+typeCheck (D _) = Right TyDouble
+typeCheck (Op op a b) = do
+    a' <- typeCheck a
+    b' <- typeCheck b
+    case (op, a', b') of
+        (Div, TyDouble, TyDouble) -> Right TyDouble
+        (Div, _, _) -> Left (IntDivision a' b')
+        (_, _, _) -> if a' == b' then Right a' else Left (TypeMismatch a' b')
 
 testCase :: String -> Bool -> Maybe String
 testCase err cond = if cond then Nothing else Just err
