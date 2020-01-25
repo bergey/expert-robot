@@ -30,3 +30,5 @@ eval env (Var v) = case Map.lookup v env of
 eval env (Let name rhs inExpr) = do
     value <- eval env rhs
     eval (Map.insert name value env) inExpr
+
+-- TODO check that variables are defined / in scope before use; a vestigial type checker

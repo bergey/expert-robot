@@ -11,7 +11,7 @@ import qualified Stack.Double as T
 unsafeCompile :: E.Expr -> [T.Instruction]
 unsafeCompile (E.I i) = [T.Push (T.I i)]
 unsafeCompile (E.D x) = [T.Push (T.D x)]
-unsafeCompile (E.Op op a b) = op' : unsafeCompile a ++ unsafeCompile b
+unsafeCompile (E.Op op a b) = op' : unsafeCompile b ++ unsafeCompile a
     where op' = case op of
             E.Add -> T.Op T.Add
             E.Sub -> T.Op T.Sub
