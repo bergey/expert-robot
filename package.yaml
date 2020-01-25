@@ -7,11 +7,16 @@ author:              Daniel Bergey
 maintainer:          bergey@teallabs.org
 copyright:           BSD3
 
-executables:
-  expert-robot:
-    source-dirs:      src
-    main:             Main.hs
+library:
+    source-dirs: ./src
     build-tools: alex
+
+tests:
+  expert-robot:
+    source-dirs:      test
+    main:             Main.hs
+    dependencies:
+      - expert-robot
 
 dependencies:
     - base
