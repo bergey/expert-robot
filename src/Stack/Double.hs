@@ -1,7 +1,7 @@
 {-# LANGUAGE RankNTypes #-}
 -- | A stack language, just barely fancier than the one in Interpreters.Stack.
 
-module Interpreters.StackDouble where
+module Stack.Double where
 
 import Prelude
 

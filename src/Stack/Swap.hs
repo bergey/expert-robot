@@ -5,7 +5,7 @@
 -- 3-operand instruction in the register language is equivalent to a
 -- secquence of Swaps & the corresponding 0-operand Op.
 
-module Interpreters.SwapStack where
+module Stack.Swap where
 
 import Prelude
 import Control.Arrow (first)

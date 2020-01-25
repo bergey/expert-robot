@@ -1,6 +1,6 @@
 -- | Have operators take arbitrary number of arguments, resolve at runtime.
 
-module Interpreters.VariadicInt where
+module Expression.Variadic where
 
 import Data.Foldable
 import Data.List.NonEmpty

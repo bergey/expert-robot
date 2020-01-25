@@ -2,7 +2,7 @@
 -- or IR for expression languages.  Without jumps or RAM, it's not
 -- powerful enough as a compilation target for a lambda calculus.
 
-module Interpreters.Stack where
+module Stack.Int where
 
 import Prelude
 

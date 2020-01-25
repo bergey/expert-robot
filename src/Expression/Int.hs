@@ -1,6 +1,6 @@
 -- | A very simple expression language
 
-module Interpreters.BinInt where
+module Expression.Int where
 
 import Prelude
 import Data.Maybe

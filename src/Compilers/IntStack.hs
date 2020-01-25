@@ -2,10 +2,10 @@
 -- Nothing tricky here - no functions, no data structures, no let
 -- bindings.
 
-module Compilers.ExprStack where
+module Compilers.IntStack where
 
-import Interpreters.BinInt as S
-import qualified Interpreters.Stack as T
+import Expression.Int as S
+import qualified Stack.Int as T
 
 import Prelude
 import Data.Maybe

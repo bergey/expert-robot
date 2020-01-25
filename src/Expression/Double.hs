@@ -2,7 +2,7 @@
 -- | An expression language with two primitive types, and hence with
 -- runtime errors.
 
-module Interpreters.BinDouble where
+module Expression.Double where
 
 import Prelude
 import Data.Maybe

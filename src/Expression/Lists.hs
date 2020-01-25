@@ -1,6 +1,6 @@
 -- | A language with Cons lists.
 
-module Interpreters.Lists where
+module Expression.Lists where
 
 import Data.Foldable
 import Data.List.NonEmpty

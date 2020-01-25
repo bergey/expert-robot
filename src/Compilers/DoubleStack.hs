@@ -4,8 +4,8 @@
 
 module Compilers.DoubleStack where
 
-import qualified Interpreters.BinDouble as E
-import qualified Interpreters.StackDouble as T
+import qualified Expression.Double as E
+import qualified Stack.Double as T
 
 -- | This does no type checking, and does not ever raise errors
 unsafeCompile :: E.Expr -> [T.Instruction]
